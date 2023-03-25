@@ -1,0 +1,21 @@
+# job build yimage and push to ghcr.oi
+name: Build and Push Docer Image
+on:
+  push:
+    branches:
+      - master
+    pull_request:
+      branches:
+jobs:
+build:
+  runs-on: ubuntu-laters
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build and Push
+      uses: docker/build-push-action2@v2
+      with:
+        context:
+        file: ./Dockerfile
+        push: true
+        tags: gher.io/staskyryk2004/webinar:laters
